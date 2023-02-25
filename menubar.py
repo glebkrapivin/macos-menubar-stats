@@ -23,7 +23,7 @@ class App:
 
         self.render_title_timer = rumps.Timer(self.render_title, TITLE_REFRESH_SEC)
 
-    def register_handler(self, processor: BaseProcessor) -> "App":
+    def register_processor(self, processor: BaseProcessor) -> "App":
         if not processor.period_sec:
             raise ValueError('Run period should be specified in seconds')
         if processor in self.processors:

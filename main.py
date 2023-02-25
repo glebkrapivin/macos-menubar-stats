@@ -13,7 +13,7 @@ if __name__ == '__main__':
     usdt = USDTProcessor(period_sec=60)
 
     a = App()
-    a.register_handler(usdt)
-    a.register_handler(aq)
-    a.register_handler(ct)
+    a.register_processor(usdt)
+    a.register_processor(aq)
+    a.register_processor(ct)
     a.run()
