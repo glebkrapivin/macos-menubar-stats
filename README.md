@@ -9,6 +9,16 @@ One can add custom sources by:
  - Inheriting from BaseProcessor class and overriding `get_data` method
  - Registering new processor with the app and providing `n_retries` and `period_sec` for retries and update intervals respectfully
 
+```python
+from processors import AirQualityProcessor
+from menubar import App
+
+a = App() \
+    .register_processor(AirQualityProcessor(url='...')) \
+    .run()
+```
+
+
 ### TODO:
 - [ ] Make that an installable package, delete optional dependencies from requirements
 - [ ] Exponential backoff while retrying
