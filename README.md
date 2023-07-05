@@ -3,7 +3,7 @@
 # macos-menubar-stats
 This set of scripts allows for easy creation of menu-bar apps, that collect and display custom data like exchange rates, air-quality and so on. 
 
-[![image.png](https://i.postimg.cc/TY5M6syd/image.png)](https://postimg.cc/zVNPw0S6)
+[![image.png](https://i.postimg.cc/YqfZLr5n/image.png)](https://postimg.cc/9r0JvhFZ)
 
 One can add custom sources by:
  - Inheriting from BaseProcessor class and overriding `get_data` method
