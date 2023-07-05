@@ -8,18 +8,22 @@ This set of scripts allows for easy creation of menu-bar apps, that collect and 
 One can add custom sources by:
  - Inheriting from BaseProcessor class and overriding `get_data` method
  - Registering new processor with the app and providing `n_retries` and `period_sec` for retries and update intervals respectfully
+ - Or registering a new menu item callback to get a clickable button that, for instance, copies unique meeting id to clipboard
 
 ```python
 from processors import AirQualityProcessor
+from menu_callbacks import MeetzoneMenuItem
 from menubar import App
 
 a = App() \
     .register_processor(AirQualityProcessor(url='...')) \
+    .register_menu_callback(MeetzoneMenuItem()) \
     .run()
 ```
 
 
 ### TODO:
+- [X] Implement registering custom menu callbacks
 - [ ] Make that an installable package, delete optional dependencies from requirements
 - [ ] Exponential backoff while retrying
 - [ ] examples

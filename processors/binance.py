@@ -23,7 +23,7 @@ class USDTProcessor(BaseProcessor):
             "Fiat": self.fiat,
             "TradeType": self.trade_type
         }
-        r = requests.post(BINANCE_URL, json=request_data)
+        r = requests.post(BINANCE_URL, json=request_data, timeout=5)
         r.raise_for_status()
         response = r.json()
         return str(response["data"][0]["adv"]["price"])

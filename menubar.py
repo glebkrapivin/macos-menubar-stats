@@ -3,6 +3,7 @@ from collections import OrderedDict
 
 import rumps
 
+from menu_callbacks.base import MenuItemInterface
 from processors.base import BaseProcessor
 
 TITLE_REFRESH_SEC = 1
@@ -16,7 +17,7 @@ class NoProcessors(Exception):
     pass
 
 
-class App:
+class App(rumps.App):
     def __init__(self):
         self.app = rumps.App("App", "Loading...")
         self.processors = OrderedDict()
@@ -31,8 +32,13 @@ class App:
         self.processors[processor] = rumps.Timer(processor.run, processor.period_sec)
         return self
 
+    def register_menu_callback(self, menucallback: MenuItemInterface):
+        m_action = rumps.MenuItem(menucallback.get_name(), menucallback.run)
+        self.app.menu.add(m_action)
+        logging.info(f'Added new menu item {menucallback.get_name()}')
+
     def render_title(self, *args, **kwargs):
-        title = ' '.join([h.title for h in self.processors])
+        title = ' | '.join([h.title for h in self.processors])
         self.app.title = title
 
     def run(self):
