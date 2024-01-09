@@ -40,3 +40,5 @@ class BaseProcessor:
                 logging.info('got value %s from %s', self._title, self.name)
             except Exception as e:
                 logging.exception('Error while processing %s', self.name)
+
+            

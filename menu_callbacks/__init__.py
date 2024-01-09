@@ -1,2 +1,3 @@
 from menu_callbacks.meetzone import MeetzoneMenuItem
 from menu_callbacks.totp import TOTPMenuItem
+from menu_callbacks.purifier import PurifierMenuItem

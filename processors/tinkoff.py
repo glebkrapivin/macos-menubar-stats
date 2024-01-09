@@ -15,11 +15,11 @@ class TickerProcessor(BaseProcessor):
         d = {
             "ticker": self.ticker
         }
-        r = requests.post(URL, json=d, timeout=5)
+        r = requests.post(URL, json=d, timeout=3)
         r.raise_for_status()
         response = r.json()
         val = float(response["payload"]["prices"]["last"]["value"])
         if self.reversed:
             val = 1/val
-        return str(val)[:4]
+        return '{:.2f}'.format(val)
 
